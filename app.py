@@ -3,7 +3,13 @@ import pandas as pd
 import joblib
 
 # Load the trained pipeline using joblib
-pipe = joblib.load('pipe.pkl')
+# pipe = joblib.load('pipe.pkl')
+
+@st.cache_resource
+def load_model():
+    return joblib.load('pipe.pkl')
+
+pipe = load_model()
 
 # List of teams and cities
 teams = [
